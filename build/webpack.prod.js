@@ -2,7 +2,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: 'production',
@@ -59,11 +58,6 @@ module.exports = {
         }),
         new OptimizeCSSAssetsPlugin({
             assetNameRegExp: /\.min\.css$/,
-        }),
-        new CopyWebpackPlugin(
-            [{ from: './public/index.html', to: './', force: true }],
-            { copyUnmodified: true }
-        ),
-        new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
+        })
     ],
 };
